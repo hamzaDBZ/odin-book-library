@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+table {
+    margin: 50px auto 0;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background-color: #eee;
+}
+
+tbody tr:nth-of-type(2n):not(tr:first-of-type) {
+    background-color: #eee;
+}
+
+th, td {
+    padding: 15px;
+    max-width: 200px;
+}
+
+th:last-child > div {
+    width: 50px;
+}
+
+td {
+    text-align: center;
+}
+
+.remove {
+    background-color: #f00;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.add-book {
+    font-size: 4rem;
+    align-content: center;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    background-color: #f0f;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+}
+
+.status {
+    font-size: 16px;
+    font-weight: bold;
+    width: 100px;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.read {
+    background-color: #179217;
+}
+
+dialog {
+    height: max-content;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+dialog form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+dialog form > div input {
+    height: 30px;
+    width: 100%;
+    margin-top: 2px;
+    font-size: 100%;
+    border-radius: 5px;
+}
+
+dialog form > div:nth-last-child(2) {
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+#status {
+    accent-color: #66f466;
+    width: 20px;
+}
+
+dialog form > div:last-child {
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+dialog form button {
+    width: 50%;
+    height: auto;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+dialog form button:first-child {
+    background-color: #000;
+    color: #fff;
+}
+
+dialog form button:first-child:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+dialog form button:last-child {
+    background-color: #fff;
+    color: #000;
+}
+
+dialog form button:last-child:hover {
+    background-color: #000;
+    color: #fff;
+}
