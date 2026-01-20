@@ -104,13 +104,27 @@ close.addEventListener('click', () => {
     dialog.close();
 })
 
-const addbtn = document.querySelector('button.add');
-addbtn.addEventListener('click', () => {
-    const title = document.querySelector('input[name="title"]').value;
-    const author = document.querySelector('input[name="author"]').value;
-    const pages = document.querySelector('input[name="number-of-pages"]').value;
+
+// ADD VALIDATION
+const titleInput = document.querySelector('input[name="title"]');
+titleInput.addEventListener('input', () => checkValue(titleInput));
+titleInput.addEventListener('invalid', () => checkValue(titleInput));
+
+const authorInput = document.querySelector('input[name="author"]');
+authorInput.addEventListener('input', () => checkValue(authorInput));
+authorInput.addEventListener('invalid', () => checkValue(authorInput));
+
+const pagesInput = document.querySelector('input[name="number-of-pages"]');
+pagesInput.addEventListener('input', () => checkValue(pagesInput));
+pagesInput.addEventListener('invalid', () => checkValue(pagesInput));
+
+const form = document.querySelector('dialog form');
+form.addEventListener('submit', () => {
+    title = titleInput.value;
+    author = authorInput.value;
+    pages = pagesInput.value;
     const status = document.querySelector('input[name="status"]').checked;
-    if (title === "" || author === "" || +pages <= 0) return;
+
     if (myLibrary.length === 0)
         document.querySelector('.empty').parentElement.remove();
     const book = new Book(title, author, pages, status);
@@ -137,4 +151,21 @@ document.querySelectorAll('.status').forEach((status) => {
     })
 })
 
-
+function checkValue(input) {
+    if (!input.validity.valueMissing)
+        input.setCustomValidity("");
+    else if (!input.validity.rangeUnderflow && input.type === "number") 
+        input.setCustomValidity("Number of pages must be greater or equal to 1!");
+    else {
+        switch (input.id) {
+            case "title":
+                input.setCustomValidity("The title must be filled!");
+                break;
+            case "author":
+                input.setCustomValidity("The author name must be filled!");
+                break;
+            default:
+                break;
+        }
+    }
+}
